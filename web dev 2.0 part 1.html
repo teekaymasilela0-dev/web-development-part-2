@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="with=device-width , inital-scale=1.0">
+    <title>VSO7 Clothing - NEW Collection</title>
+    <link rel="proconnect" href="https://fonts.gooleapis.com">
+    <link hef="https://fonts.googleapies.com/css2?family=Anton&family=Iner:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --black:#0a0a0a;
+            --panel:#161616;
+            --panel-2:#1f1f1f;
+            --white:#f5f5f3;
+            --grey:#8a8a86;
+            --red:#e8332a;
+            --line:rgba(245,245,243,0.2);
+            --dispay:'Antor', sans-serif;
+            --body:'inter', sans-serif;
+            --mono:'Space Mono',monospace;
+        }
+
+        *{box-sizing:border-box;margin:0;padding:0;}
+
+        html{ scroll-behavior:smooth;}
+
+        body{
+            background :var(--black);
+            color:var(--white);
+            font-family:var(--body);
+            line-height:1.5;
+            -webkit-font-smoothing:antialiased;
+        }
+
+        a{ color:inherit; text-decoration:none; }
+        ul{ list-style:none; }
+        img{ max-width:100%; display: block; }
+
+        :focus-visible{
+            outline:2px solid var(--red);
+            outline-offset:3px;
+        } 
+
+        .wrap{
+            max-width:1200px;
+            margin:0 auto;
+            padding:0 clamp(1,25rem, 4vw, 3rem );
+        }
+
+        
+        header{
+            position:sticky;
+            top:0;
+            z-index:50;
+            background: rgba(10,10,10,0.9);
+            backdrop-filter:blur(8px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav{
+            display:flex;
+            align-items:center ;
+            justify-content:space-between;
+            padding:1.1rem 0;
+        }
+
+        .logo{
+            font-family: var(--dispay);
+            font-size: 1.6rem ;
+            letter-spacing:0.04em;
+        }
+
+        .logo span {color:var(--red); }
+
+        .nav-links{
+            display: flex ;
+            gap: 2.25rem;
+            font-size:0.85rem;
+            font-weight: 600;
+            letter-spacing:0.14em;
+            text-transform:uppercase;
+        }
+
+        .nav-links a{
+            position:relative;
+            padding-bottom:4px ;
+        }
+        .nav-links a::after{
+            content:"";
+            position:absplute;
+            left:0; bottom:0;
+            width:0; height: 2px;
+            background : var(--red);
+            transition:width .25s ease;
+        }
+        .nav-links a:hover::after,
+        .nav-links a:focus-visible::after{width:100%; }
+
+        .nav-cart{
+            display:flex;
+            align-items:center;
+            gap:0.5rem;
+            font-family: var(--mono);
+            font-size:0.85rem;
+            border:1px solid var(--line);
+            padding:0.5rem 0.9rem;
+            border-radius: 2px;
+            background: transparent;
+            color:var(--white);
+            cursor:pointer;
+        }
+        .nav-cart:hover{border-color:var(--red); }
+        .cart-count{
+            background:var(--red);
+            color:var(--black);
+            font-weight: 700;
+            border-radius: 50%;
+            width:1.3rem; height: 1.3rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size:0.7rem;
+        }
+
+        .nav-toggle{
+            display:none;
+            background: none;
+            border:0;
+            color:var(--white);
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        
+        .hero{
+            position:relative;
+            padding: clamp(3.5rem,10vw,7rem) 0 clamp(3rem,8vw,5rem);
+            overflow: hidden;
+            border-bottom:1px solid var(--line)
+        }
+
+        .hero-bg-slash{
+            position: absolute;
+            top: -20%; right: -10%;
+            width:60%; height: 140%;
+            background: linear-gradient(135deg, var(--red) 0%, transparent 70%);
+            opacity: 0,18;
+            transform: skewX(-12deg);
+            pointer-events: none;
+        }
+
+        .eybrow{
+            display: inline-flex;
+            align-items: center;
+            gap:0,6rem;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            letter-spacing:0.18em;
+            text-transform: uppercase;
+            color:var(--red);
+            margin-bottom: 1.25rem;
+        }
+        .eyebrow::before{
+            content:"";
+            width:1,6rem ; height: 1px;
+            background: var(--red);
+        }
+        .hero h1 em{
+            font-family: var(--display);
+            font-size: clamp(2.8rem, 8vw,6rem);
+            line-height:0,95 ;
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
+            max-width: 14ch;
+        }
+        .hero h1 em{
+            font-style: normal;
+            color:var(--red);
+        }
+
+        .hero-sub{
+            margin-top:1.5rem;
+            max-width:38ch;
+            color:var(--grey)
+            font-size:1.05rem;
+        }
+
+        .hero-cta{
+            margin-top:2.25rem;
+            display:flex;
+            gap:1rem;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            font-family: var(--mono);
+            font-size:0.85rem;
+            letter-spacing: 0.08rem;
+            text-transform:uppercase;
+            padding: 0.95rem 1.9rem;
+            border-radius: 2px;
+            border: 1px solid var(--white);
+            cursor: pointer;
+            transition: transform .15s ease, backround .2s ease, color .2s ease;
+            display:inline-block;
+        }
+        .btn-primary{
+            background: var(--red);
+            border-color: var(--red);
+            color: var(--black);
+            font-weight: 700;
+        }
+        .btn-primary:hover{ transform:translateY(-2px);}
+        .btn-ghost{
+            background: transparent;
+            color:var(--white);
+        }
+        .btn-ghost :hover{
+            background: var(--white);
+            color:var(--black);
+        }
+
+        
+  .about-strip{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3rem;
+    align-items:center;
+  }
+  .about-strip .num{
+    font-family:var(--mono);
+    color:var(--red);
+    font-size:0.8rem;
+    letter-spacing:0.15em;
+  }
+  .about-strip h2{
+    font-family:var(--display);
+    font-size:clamp(1.8rem,4vw,2.4rem);
+    text-transform:uppercase;
+    margin:0.75rem 0 1rem;
+  }
+  .about-strip p{ color:var(--grey); }
+  .stat-row{
+    display:flex;
+    gap:2.5rem;
+    margin-top:2rem;
+    flex-wrap:wrap;
+  }
+  .stat b{
+    display:block;
+    font-family:var(--display);
+    font-size:2rem;
+    color:var(--white);
+  }
+  .stat span{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    color:var(--grey);
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+
+  /* ---- Footer ----- */
+  footer{ padding:3rem 0 2rem; }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:2rem;
+    padding-bottom:2rem;
+    border-bottom:1px solid var(--line);
+  }
+  .foot-grid h4{
+    font-family:var(--mono);
+    font-size:0.75rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--grey);
+    margin-bottom:1rem;
+  }
+  .foot-grid li{ margin-bottom:0.6rem; font-size:0.9rem; }
+  .foot-grid li a:hover{ color:var(--red); }
+  .foot-brand p{
+    color:var(--grey);
+    font-size:0.88rem;
+    max-width:32ch;
+    margin-top:0.75rem;
+  }
+  .foot-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:1.5rem;
+    font-family:var(--mono);
+    font-size:0.75rem;
+    color:var(--grey);
+    flex-wrap:wrap;
+    gap:0.75rem;
+  }
+
+  
+  @media (max-width: 860px){
+    .nav-links{
+      position:fixed;
+      top:64px; left:0; right:0;
+      background:var(--black);
+      border-bottom:1px solid var(--line);
+      flex-direction:column;
+      gap:0;
+      padding:0.5rem 0;
+      transform:translateY(-130%);
+      transition:transform .25s ease;
+    }
+    .nav-links.open{ transform:translateY(0); }
+    .nav-links a{
+      padding:0.9rem clamp(1.25rem,4vw,3rem);
+      width:100%;
+      display:block;
+      border-bottom:1px solid var(--line);
+    }
+    .nav-toggle{ display:block; }
+    .grid{ grid-template-columns:repeat(2,1fr); }
+    .about-strip{ grid-template-columns:1fr; }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width: 520px){
+    .grid{ grid-template-columns:1fr; }
+    .foot-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">VS<span>O7</span></a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#top">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div style="display:flex; align-items:center; gap:0.75rem;">
+      <button class="nav-cart" id="cartBtn" aria-label="View cart">
+        Cart <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-bg-slash" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow">SS26 Collection · Made for Mzansi</span>
+      <h1>Wear the <em>city</em>, own the fit.</h1>
+      <p class="hero-sub">VSO7 is affordable, modern streetwear built for South African youth — hoodies, tees, denim and outerwear designed to move with you.</p>
+      <div class="hero-cta">
+        <a href="#shop" class="btn btn-primary">Shop Now</a>
+        <a href="#about" class="btn btn-ghost">Our Story</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="shop">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>New Collection</h2>
+        <p>Three drops from this week's release — full catalogue coming in Shop.</p>
+      </div>
+
+      <div class="grid">
+
+        <article class="card">
+          <div class="card-image">
+            T-Shirt Image
+            <span class="tag">R299</span>
+          </div>
+          <div class="card-body">
+            <h3>Core Tee — Black</h3>
+            <p class="card-meta">Sizes S–XXL · 100% cotton</p>
+            <div class="card-foot">
+              <span class="price">R299</span>
+              <button class="add-btn" data-add>Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-image">
+            Hoodie Image
+            <span class="tag">R499</span>
+          </div>
+          <div class="card-body">
+            <h3>Signature Hoodie</h3>
+            <p class="card-meta">Sizes S–XXL · Fleece-lined</p>
+            <div class="card-foot">
+              <span class="price">R499</span>
+              <button class="add-btn" data-add>Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-image">
+            Jeans Image
+            <span class="tag">R699</span>
+          </div>
+          <div class="card-body">
+            <h3>Straight-Leg Denim</h3>
+            <p class="card-meta">Sizes 28–38 · Dark wash</p>
+            <div class="card-foot">
+              <span class="price">R699</span>
+              <button class="add-btn" data-add>Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap about-strip">
+      <div>
+        <span class="num">01 / About VSO7</span>
+        <h2>Fashion that keeps up with you</h2>
+        <p>VSO7 is a South African clothing start-up delivering fashionable, affordable streetwear through a fast, convenient online store. We're building a brand young South Africans are proud to wear.</p>
+        <div class="stat-row">
+          <div class="stat"><b>7+</b><span>Product Lines</span></div>
+          <div class="stat"><b>16–35</b><span>Target Age Range</span></div>
+          <div class="stat"><b>ZA</b><span>Proudly Local</span></div>
+        </div>
+      </div>
+      <div class="card-image" style="aspect-ratio:1/1; border-radius:4px;">Brand Lookbook Image</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="logo">VS<span>O7</span></a>
+        <p>Modern, affordable streetwear for South Africa's next generation.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#shop">New In</a></li>
+          <li><a href="#shop">Hoodies</a></li>
+          <li><a href="#shop">Denim</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>©️ 2026 VSO7 Clothing. All rights reserved.</span>
+      <span>vso7.co.za</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Simple cart counter (front-end demo only — no backend/storage)
+  let cartCount = 0;
+  const cartCountEl = document.getElementById('cartCount');
+  document.querySelectorAll('[data-add]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      cartCount++;
+      cartCountEl.textContent = cartCount;
+      btn.textContent = 'Added ✓';
+      setTimeout(() => { btn.textContent = 'Add to Cart'; }, 900);
+    });
+  });
+</script>
+
+</body>
+</html>
+        
+
+
+        
+    
